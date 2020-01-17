@@ -43,11 +43,17 @@ namespace Example.Aspnetcore
                 {
                     Title = "Kdniao.Core 测试 API ",
                     Version = "v1",
-                    Description = "Kdniao.Core Swagger",
+                    TermsOfService = new Uri("https://github.com/wannvmi/Kdniao.Core"),
+                    Description = "Kdniao.Core 是基于.NET Core，根据快递鸟官方API文档开发的跨平台SDK集。",
                     Contact = new OpenApiContact
                     {
                         Name = "wannvmi",
+                        Url = new Uri("https://github.com/wannvmi/"),
                         Email = "996198546@qq.com"
+                    },
+                    License = new OpenApiLicense
+                    {
+
                     }
                 });
 
@@ -58,8 +64,6 @@ namespace Example.Aspnetcore
 
                 // enable swagger Annotations
                 options.EnableAnnotations();
-                //options.AddEnumsWithValuesFixFilters(true);
-
             });
             #endregion
         }

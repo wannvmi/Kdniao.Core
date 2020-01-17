@@ -11,5 +11,10 @@ namespace Example.Aspnetcore.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
+        [HttpGet]
+        public IActionResult Test()
+        {
+            return Ok("1");
+        }
     }
 }
