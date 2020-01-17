@@ -1,0 +1,5 @@
+隐私发件demo,请求帐号需要先申请隐私发件接口权限
+1.KdApiSafeEOrder.cs
+隐私电子面单demo
+2.KdnApiSafeCode.cs
+安全号码

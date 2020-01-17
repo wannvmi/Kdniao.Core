@@ -1,0 +1,18 @@
+代收货款接口demo说明：
+1.接口分为3个类别：用户信息类，服务申请类，订单类，demo文件分别放置在对应文件夹中
+2.用户信息类(User文件夹)
+	1.提交返款银行信息	KdnCmApiQueryBankBackInfo
+	2.查询用户信息	KdnCmApiQueryUser
+	3.查询用户额度	KdnCmApiQueryUserLimit
+	4.提交返款银行信息	KdnCmApiSubmitBankBackInfo
+	5.联合注册帐号	KdnCmApiUnionRegister
+	6.更新用户信息	KdnCmApiUpdateUser
+3.服务申请类（Service文件夹）
+	1.普通代收货款申请	KdnCmApiCODApply
+	2.货款直退申请	KdnCmApiCODBackApply
+	3.货款垫付申请	KdnCmApiCODpayApply
+	4.查询代收货款状态	KdnCmApiQueryApplySts
+4.订单类（Order文件夹）
+	1.电子面单预览	KdApiEOrderPrev
+	2.获取订单货款状态	KdnCmApiGetLoanOrderStatus
+	3.服务费计算	KdnCmApiServiceFeeCalc

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Kdniao.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +24,13 @@ namespace Example.Aspnetcore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddKdniao(options =>
+            {
+                options.EBusinessID = "test1596820";
+                options.AppKey = "e4d81345-4b85-4cf7-81d7-6a0ab8f0fa19";
+                options.IsSandBox = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

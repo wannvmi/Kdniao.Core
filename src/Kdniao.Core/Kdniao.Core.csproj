@@ -1,7 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
+  <!--<PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>-->
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
