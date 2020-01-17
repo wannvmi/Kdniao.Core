@@ -4,6 +4,7 @@ namespace Kdniao.Core
 {
     public interface IKdniaoClient
     {
+        Task<T> ExecuteAsync<T>(IKdniaoRequest<T> request) where T : KdniaoResponse;
         Task<T> ExecuteAsync<T>(IKdniaoRequest<T> request, KdniaoOptions options) where T : KdniaoResponse;
     }
 }

@@ -30,9 +30,9 @@ namespace Example.Aspnetcore
 
             services.AddKdniao(options =>
             {
-                options.EBusinessID = "test1596820";
-                options.AppKey = "e4d81345-4b85-4cf7-81d7-6a0ab8f0fa19";
-                options.IsSandBox = true;
+                options.EBusinessID = "test1596820";    // 电商ID
+                options.AppKey = "e4d81345-4b85-4cf7-81d7-6a0ab8f0fa19";    // 电商加密私钥，快递鸟提供，注意保管，不要泄漏
+                options.IsSandBox = true;   // 是否为沙箱环境
             });
 
             #region Swagger

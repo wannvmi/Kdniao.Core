@@ -23,6 +23,14 @@ namespace Kdniao.Core
             {
                 services.Configure(setupAction);
             }
+            else
+            {
+                services.Configure<KdniaoOptions>(options =>
+                {
+                    options.EBusinessID = string.Empty;
+                    options.AppKey = string.Empty;
+                });
+            }
         }
     }
 }

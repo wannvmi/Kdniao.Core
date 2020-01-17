@@ -6,39 +6,36 @@ using Kdniao.Core;
 using Kdniao.Core.Request;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace Example.Aspnetcore.Controllers
 {
     /// <summary>
-    /// 即时查询API
+    /// 单号识别API
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    [SwaggerTag("即时查询API")]
-    public class KdApiSearchController : ControllerBase
+    [SwaggerTag("单号识别API")]
+    public class KdApiOrderDistinguishController : ControllerBase
     {
         private readonly IKdniaoClient _kdniaoClient;
 
-        public KdApiSearchController(
+        public KdApiOrderDistinguishController(
             IKdniaoClient kdniaoClient)
         {
             _kdniaoClient = kdniaoClient;
         }
 
         /// <summary>
-        /// 即时查询API
+        /// 单号识别
         /// </summary>
-        /// <param name="shipperCode">快递公司编码</param>
         /// <param name="logisticCode">物流单号</param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> GetOrderTraces(string shipperCode = "SF", string logisticCode = "1234561")
+        public async Task<IActionResult> OrderTracesSub( string logisticCode = "1234561")
         {
-            var model = new KdApiSearchRequest
+            var model = new KdApiOrderDistinguishRequest
             {
-                ShipperCode = shipperCode,
                 LogisticCode = logisticCode
             };
             var result = await _kdniaoClient.ExecuteAsync(model);

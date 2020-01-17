@@ -22,7 +22,7 @@ namespace Kdniao.Core.Security
             using (var md5 = System.Security.Cryptography.MD5.Create())
             {
                 var hsah = md5.ComputeHash(Encoding.GetEncoding(charset).GetBytes(str));
-                return BitConverter.ToString(hsah).Replace("-", "");
+                return BitConverter.ToString(hsah).Replace("-", "").ToLower();
             }
         }
     }

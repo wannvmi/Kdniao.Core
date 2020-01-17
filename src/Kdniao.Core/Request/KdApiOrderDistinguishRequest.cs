@@ -8,20 +8,10 @@ using Kdniao.Core.Response;
 namespace Kdniao.Core.Request
 {
     /// <summary>
-    /// 即时查询API
+    /// 单号识别API
     /// </summary>
-    public class KdApiSearchRequest : IKdniaoRequest<KdApiSearchResponse>
+    public class KdApiOrderDistinguishRequest : IKdniaoRequest<KdApiOrderDistinguishResponse>
     {
-        /// <summary>
-        /// 订单编号
-        /// </summary>
-        public string OrderCode { get; set; } = "";
-
-        /// <summary>
-        /// 快递公司编码
-        /// </summary>
-        public string ShipperCode { get; set; }
-
         /// <summary>
         /// 物流单号
         /// </summary>
@@ -50,8 +40,6 @@ namespace Kdniao.Core.Request
         {
             return JsonSerializer.Serialize(new
             {
-                OrderCode = OrderCode,
-                ShipperCode = ShipperCode,
                 LogisticCode = LogisticCode
             });
         }
@@ -61,15 +49,13 @@ namespace Kdniao.Core.Request
             var parameters = new Dictionary<string, string>
             {
                 { "RequestData", HttpUtility.UrlEncode(GetRequestData(), Encoding.UTF8) },
-                { "RequestType", "1002" },
+                { "RequestType", "2002" },
                 { "DataType", "2"}
             };
             return parameters;
         }
-        
+
 
         #endregion
-
-
     }
 }
