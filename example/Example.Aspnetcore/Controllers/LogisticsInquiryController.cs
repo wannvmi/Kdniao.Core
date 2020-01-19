@@ -11,31 +11,31 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace Example.Aspnetcore.Controllers
 {
     /// <summary>
-    /// 单号识别API
+    /// 查询类接口
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
-    [SwaggerTag("单号识别API")]
-    public class KdApiOrderDistinguishController : ControllerBase
+    [SwaggerTag("查询类接口")]
+    public class LogisticsInquiryController : ControllerBase
     {
         private readonly IKdniaoClient _kdniaoClient;
-
-        public KdApiOrderDistinguishController(
-            IKdniaoClient kdniaoClient)
+        public LogisticsInquiryController(IKdniaoClient kdniaoClient)
         {
             _kdniaoClient = kdniaoClient;
         }
 
         /// <summary>
-        /// 单号识别
+        /// 即时查询API
         /// </summary>
+        /// <param name="shipperCode">快递公司编码</param>
         /// <param name="logisticCode">物流单号</param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> OrderTracesSub( string logisticCode = "1234561")
+        public async Task<IActionResult> KdApiSearch(string shipperCode = "SF", string logisticCode = "1234561")
         {
-            var model = new KdApiOrderDistinguishRequest
+            var model = new KdApiSearchRequest
             {
+                ShipperCode = shipperCode,
                 LogisticCode = logisticCode
             };
             var result = await _kdniaoClient.ExecuteAsync(model);
