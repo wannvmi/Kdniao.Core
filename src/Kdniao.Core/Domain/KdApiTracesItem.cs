@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Kdniao.Core.Domain
 {
-    public class KdApiSearchTraces
+    public class KdApiTracesItem
     {
         /// <summary>
         /// 时间

@@ -33,6 +33,6 @@ namespace Kdniao.Core.Response
         /// <summary>
         /// Traces
         /// </summary>
-        public List<KdApiSearchTraces> Traces { get; set; }
+        public List<KdApiTracesItem> Traces { get; set; }
     }
 }

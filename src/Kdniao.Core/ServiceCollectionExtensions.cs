@@ -18,6 +18,7 @@ namespace Kdniao.Core
             services.AddHttpClient(nameof(KdniaoClient));
 
             services.AddSingleton<IKdniaoClient, KdniaoClient>();
+            services.AddSingleton<IKdniaoNotifyClient, KdniaoNotifyClient>();
 
             if (setupAction != null)
             {

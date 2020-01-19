@@ -26,13 +26,26 @@ namespace Example.Aspnetcore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddQueuePolicy(options =>
+            {
+                //最大并发请求数
+                options.MaxConcurrentRequests = 50;
+                //请求队列长度限制
+                options.RequestQueueLimit = 10;
+            });
 
             services.AddKdniao(options =>
             {
                 options.EBusinessID = "test1596820";    // 电商ID
                 options.AppKey = "e4d81345-4b85-4cf7-81d7-6a0ab8f0fa19";    // 电商加密私钥，快递鸟提供，注意保管，不要泄漏
                 options.IsSandBox = true;   // 是否为沙箱环境
+            });
+
+            services.AddControllers();
+            //地址栏全部小写 兼容linux 
+            services.AddRouting(options =>
+            {
+                options.LowercaseUrls = true;
             });
 
             #region Swagger
@@ -75,6 +88,9 @@ namespace Example.Aspnetcore
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            //添加并发限制中间件
+            app.UseConcurrencyLimiter();
 
             #region Swagger
             //启用中间件服务生成Swagger作为JSON终结点
