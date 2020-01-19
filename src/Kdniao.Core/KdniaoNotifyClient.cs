@@ -81,24 +81,6 @@ namespace Kdniao.Core
             };
         }
 
-        public IDictionary<string, string> GetParameters(HttpRequest request)
-        {
-            var parameters = new Dictionary<string, string>();
-            if (request.Method == "POST")
-            {
-                foreach (var iter in request.Form)
-                {
-                    parameters.Add(iter.Key, iter.Value);
-                }
-            }
-            else
-            {
-                foreach (var iter in request.Query)
-                {
-                    parameters.Add(iter.Key, iter.Value);
-                }
-            }
-            return parameters;
-        }
+
     }
 }

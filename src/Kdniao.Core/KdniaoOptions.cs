@@ -13,7 +13,7 @@
         public string AppKey { get; set; }
 
         /// <summary>
-        /// 是否为沙箱环境
+        /// 是否为沙箱环境 默认为false
         /// </summary>
         public bool IsSandBox { get; set; } = false;
     }

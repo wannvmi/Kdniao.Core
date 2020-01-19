@@ -12,16 +12,16 @@ namespace Kdniao.Core
         /// <summary>
         /// 用户ID
         /// </summary>
-        public string EBusinessID { get; set; }
+        public virtual string EBusinessID { get; set; }
 
         /// <summary>
         /// 成功与否
         /// </summary>
-        public bool Success { get; set; }
+        public virtual bool Success { get; set; }
 
         /// <summary>
         /// 失败原因
         /// </summary>
-        public string Reason { get; set; }
+        public virtual string Reason { get; set; }
     }
 }

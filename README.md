@@ -19,9 +19,29 @@ public void ConfigureServices(IServiceCollection services)
     {
         options.EBusinessID = "1111";    // 电商ID
         options.AppKey = "11111111111";    // 电商加密私钥，快递鸟提供，注意保管，不要泄漏
-        options.IsSandBox = true;   // 是否为沙箱环境
+        options.IsSandBox = true;   // 是否为沙箱环境 默认为false
     });
 }
+````
+* 多账户配置
+````csharp
+public class MyOptionsA : KdniaoOptions {}
+public class MyOptionsB : KdniaoOptions {}
+````
+依赖注入
+````csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.Configure<MyOptionsA>(Configuration.GetSection("MyOptionsA"));
+    services.Configure<MyOptionsB>(Configuration.GetSection("MyOptionsB"));
+    services.AddKdniao();
+}
+````
+使用
+````csharp
+private readonly IOptions<MyOptionsA> _options;
+
+await _kdniaoClient.ExecuteAsync(model,_options);
 ````
 ### 3.在Controller中使用
 
