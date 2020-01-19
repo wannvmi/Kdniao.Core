@@ -11,6 +11,11 @@ namespace Kdniao.Core.Response
     public class KdApiOrderDistinguishResponse : KdniaoResponse
     {
         /// <summary>
+        /// 物流运单号
+        /// </summary>
+        public string LogisticCode { get; set; }
+
+        /// <summary>
         /// 失败原因
         /// </summary>
         public int? Code { get; set; }

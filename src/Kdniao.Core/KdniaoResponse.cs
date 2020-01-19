@@ -15,21 +15,6 @@ namespace Kdniao.Core
         public string EBusinessID { get; set; }
 
         /// <summary>
-        /// 订单编号
-        /// </summary>
-        public string OrderCode { get; set; }
-
-        /// <summary>
-        /// 快递公司编码
-        /// </summary>
-        public string ShipperCode { get; set; }
-
-        /// <summary>
-        /// 物流运单号
-        /// </summary>
-        public string LogisticCode { get; set; }
-
-        /// <summary>
         /// 成功与否
         /// </summary>
         public bool Success { get; set; }

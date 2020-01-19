@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Web;
 using Kdniao.Core.Security;
+using Kdniao.Core.Utility;
 using Microsoft.Extensions.Options;
 
 namespace Kdniao.Core
@@ -28,7 +29,7 @@ namespace Kdniao.Core
 
         public async Task<T> ExecuteAsync<T>(IKdniaoRequest<T> request, KdniaoOptions options) where T : KdniaoResponse
         {
-            OptionsValidate(options);
+            OptionsValidate.Confirm(options);
 
             var dataSign = Encrypt.Compute(request.GetRequestData(), options.AppKey, "UTF-8");
             var param = new KdniaoDictionary(request.GetParameters())
@@ -45,24 +46,5 @@ namespace Kdniao.Core
             return JsonSerializer.Deserialize<T>(result);
         }
 
-
-
-        private void OptionsValidate(KdniaoOptions options)
-        {
-            if (options == null)
-            {
-                throw new ArgumentNullException(nameof(options));
-            }
-
-            if (string.IsNullOrEmpty(options.EBusinessID))
-            {
-                throw new ArgumentNullException(nameof(options.EBusinessID));
-            }
-
-            if (string.IsNullOrEmpty(options.AppKey))
-            {
-                throw new ArgumentNullException(nameof(options.AppKey));
-            }
-        }
     }
 }
