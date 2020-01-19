@@ -61,7 +61,7 @@ namespace Kdniao.Core.Request
             var parameters = new Dictionary<string, string>
             {
                 { "RequestData", HttpUtility.UrlEncode(GetRequestData(), Encoding.UTF8) },
-                { "RequestType", "1002" },
+                { "RequestType", ((int)KdniaoRequestType.Track).ToString() },
                 { "DataType", "2"}
             };
             return parameters;
@@ -69,7 +69,5 @@ namespace Kdniao.Core.Request
         
 
         #endregion
-
-
     }
 }

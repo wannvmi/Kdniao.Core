@@ -49,8 +49,8 @@ namespace Kdniao.Core.Request
             var parameters = new Dictionary<string, string>
             {
                 { "RequestData", HttpUtility.UrlEncode(GetRequestData(), Encoding.UTF8) },
-                { "RequestType", "2002" },
-                { "DataType", "2"}
+                { "RequestType", ((int)KdniaoRequestType.Recognise).ToString() },
+                { "DataType", "2" }
             };
             return parameters;
         }
