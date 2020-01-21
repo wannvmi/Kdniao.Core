@@ -80,5 +80,26 @@ namespace Example.Aspnetcore.Controllers
 
             return Ok(result);
         }
+
+        /// <summary>
+        /// 物流跟踪(增值版)API
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> KdApiSubscribeMonitor([FromBody] KdApiSubscribeViewModel model)
+        {
+            var request = new KdApiSubscribeMonitorRequest
+            {
+                ShipperCode = model.ShipperCode,
+                LogisticCode = model.LogisticCode,
+                Sender = model.Sender,
+                Receiver = model.Receiver
+            };
+
+            var result = await _kdniaoClient.ExecuteAsync(request);
+
+            return Ok(result);
+        }
     }
 }

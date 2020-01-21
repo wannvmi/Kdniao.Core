@@ -31,13 +31,36 @@ namespace Example.Aspnetcore.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// 物流跟踪 推送接口
+        /// </summary>
+        /// <returns></returns>
         [HttpPost("subscribenotify")]
         public async Task<IActionResult> KdApiSubscribeNotify()
         {
             try
             {
-
                 var notify = await _kdniaoNotifyClient.ExecuteAsync<KdApiSubscribeNotify>(Request);
+
+                return _kdniaoNotifyClient.Success();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return Ok(ex);
+            }
+        }
+
+        /// <summary>
+        /// 物流跟踪 推送(增值版)接口
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("subscribenotifymonitor")]
+        public async Task<IActionResult> KdApiSubscribeMonitorNotify()
+        {
+            try
+            {
+                var notify = await _kdniaoNotifyClient.ExecuteAsync<KdApiSubscribeMonitorNotify>(Request);
 
                 return _kdniaoNotifyClient.Success();
             }

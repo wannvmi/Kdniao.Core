@@ -49,6 +49,8 @@ namespace Example.Aspnetcore
                 {
                     //设置时间格式
                     options.JsonSerializerOptions.Converters.Add(new DateTimeJsonConverter("yyyy-MM-dd HH:mm:ss"));
+                    //设置bool获取格式
+                    options.JsonSerializerOptions.Converters.Add(new BoolJsonConverter());
                     //保持属性名称不变
                     options.JsonSerializerOptions.PropertyNamingPolicy = null;
                     //不使用驼峰样式的key

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Text.Json;
 using System.Web;
@@ -10,9 +9,9 @@ using Kdniao.Core.Response;
 namespace Kdniao.Core.Request
 {
     /// <summary>
-    /// 物流信息订阅
+    /// 物流信息订阅(增值版)
     /// </summary>
-    public class KdApiSubscribeRequest : IKdniaoRequest<KdApiSubscribeResponse> 
+    public class KdApiSubscribeMonitorRequest : IKdniaoRequest<KdApiSubscribeMonitorResponse>
     {
         /// <summary>
         /// 用户自定义回调信息。
@@ -146,7 +145,7 @@ namespace Kdniao.Core.Request
 
         #region IKdniaoRequest
         private string _notifyUrl = "http://api.kdniao.com/api/dist";
-        private string _sandBoxNotifyUrl = "http://sandboxapi.kdniao.com:8080/kdniaosandbox/gateway/exterfaceInvoke.json";
+        private string _sandBoxNotifyUrl = "http://testapi.kdniao.com:8081/api/dist";
 
         public string GetNotifyUrl()
         {
@@ -201,7 +200,7 @@ namespace Kdniao.Core.Request
             var parameters = new Dictionary<string, string>
             {
                 { "RequestData", HttpUtility.UrlEncode(GetRequestData(), Encoding.UTF8) },
-                { "RequestType", ((int)KdniaoRequestType.Follow).ToString() },
+                { "RequestType", ((int)KdniaoRequestType.Monitor).ToString() },
                 { "DataType", "2"}
             };
             return parameters;

@@ -6,9 +6,9 @@ using Kdniao.Core.Domain;
 namespace Kdniao.Core.Notify
 {
     /// <summary>
-    /// 订阅查询结果
+    /// 订阅查询(增值版)结果
     /// </summary>
-    public class KdApiSubscribeNotify : KdniaoNotify
+    public class KdApiSubscribeMonitorNotify : KdniaoNotify
     {
         /// <summary>
         /// 用户电商ID
@@ -28,6 +28,6 @@ namespace Kdniao.Core.Notify
         /// <summary>
         /// 推送物流单号轨迹集合
         /// </summary>
-        public List<KdApiSubscribeTrack> Data { get; set; }
+        public List<KdApiSubscribeMonitorTrack> Data { get; set; }
     }
 }

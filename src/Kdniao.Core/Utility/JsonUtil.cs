@@ -16,7 +16,8 @@ namespace Kdniao.Core.Utility
             Converters =
             {
                 new ObjectBoolConverter(),
-                new BoolJsonConverter()
+                new BoolJsonConverter(),
+                new DateTimeJsonConverter(),
             }
         };
 

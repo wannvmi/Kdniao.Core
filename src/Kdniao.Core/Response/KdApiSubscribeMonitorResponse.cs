@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Kdniao.Core.Request;
 
 namespace Kdniao.Core.Response
 {
     /// <summary>
-    /// 物流信息订阅
+    /// 物流信息订阅(增值版)
     /// </summary>
-    public class KdApiSubscribeResponse : KdniaoResponse
+    public class KdApiSubscribeMonitorResponse : KdniaoResponse
     {
         /// <summary>
         /// 更新时间 YYYY-MM-DD HH24:MM:SS
