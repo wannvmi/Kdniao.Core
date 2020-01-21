@@ -11,7 +11,7 @@ TODO
 ```
 
 ### 2.添加配置
-
+* 单账户配置
 ````csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -41,7 +41,7 @@ public void ConfigureServices(IServiceCollection services)
 ````csharp
 private readonly IOptions<MyOptionsA> _options;
 
-await _kdniaoClient.ExecuteAsync(model,_options);
+await _kdniaoClient.ExecuteAsync(model, _options.value);
 ````
 ### 3.在Controller中使用
 
@@ -51,7 +51,7 @@ private readonly IKdniaoClient _kdniaoClient;
 
 public KdApiSearchController(IKdniaoClient kdniaoClient)
 {
-	_kdniaoClient = kdniaoClient;
+    _kdniaoClient = kdniaoClient;
 }
 
 await _kdniaoClient.ExecuteAsync(model);

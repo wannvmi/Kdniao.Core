@@ -15,7 +15,7 @@ namespace Example.Aspnetcore.Controllers
     /// <summary>
     /// 快递鸟异步通知
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     [SwaggerTag("快递鸟异步通知")]
     public class KdniaoNotifyController : ControllerBase
@@ -35,7 +35,7 @@ namespace Example.Aspnetcore.Controllers
         /// 物流跟踪 推送接口
         /// </summary>
         /// <returns></returns>
-        [HttpPost("subscribenotify")]
+        [HttpPost]
         public async Task<IActionResult> KdApiSubscribeNotify()
         {
             try
@@ -55,7 +55,7 @@ namespace Example.Aspnetcore.Controllers
         /// 物流跟踪 推送(增值版)接口
         /// </summary>
         /// <returns></returns>
-        [HttpPost("subscribenotifymonitor")]
+        [HttpPost]
         public async Task<IActionResult> KdApiSubscribeMonitorNotify()
         {
             try
