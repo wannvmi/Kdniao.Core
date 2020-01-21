@@ -43,7 +43,7 @@ namespace Kdniao.Core
             var response = await client.PostAsync(reqUrl, form);
             var result = await response.Content.ReadAsStringAsync();
 
-            return JsonSerializer.Deserialize<T>(result);
+            return JsonUtil.Deserialize<T>(result);
         }
 
     }

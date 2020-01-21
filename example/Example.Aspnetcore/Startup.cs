@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Kdniao.Core;
+using Kdniao.Core.Utility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace Example.Aspnetcore
@@ -41,7 +44,24 @@ namespace Example.Aspnetcore
                 options.IsSandBox = true;   // 是否为沙箱环境
             });
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    //设置时间格式
+                    options.JsonSerializerOptions.Converters.Add(new DateTimeJsonConverter("yyyy-MM-dd HH:mm:ss"));
+                    //保持属性名称不变
+                    options.JsonSerializerOptions.PropertyNamingPolicy = null;
+                    //不使用驼峰样式的key
+                    options.JsonSerializerOptions.DictionaryKeyPolicy = null;
+                    //获取或设置要在转义字符串时使用的编码器
+                    options.JsonSerializerOptions.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+                });
+
+            services.AddLogging(options =>
+            {
+                options.AddConsole();
+            });
+
             //地址栏全部小写 兼容linux 
             services.AddRouting(options =>
             {
@@ -57,7 +77,7 @@ namespace Example.Aspnetcore
                     Title = "Kdniao.Core 测试 API ",
                     Version = "v1",
                     TermsOfService = new Uri("https://github.com/wannvmi/Kdniao.Core"),
-                    Description = "Kdniao.Core 是基于.NET Core，根据快递鸟官方API文档开发的跨平台SDK集。",
+                    Description = "Kdniao.Core 是基于.NET Core，根据快递鸟官方API文档开发的跨平台SDK集。官方文档地址：http://www.kdniao.com/api-all",
                     Contact = new OpenApiContact
                     {
                         Name = "wannvmi",

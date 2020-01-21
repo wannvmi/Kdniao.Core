@@ -31,7 +31,7 @@ namespace Kdniao.Core
             OptionsValidate.Confirm(options);
             var body = await new StreamReader(request.Body, Encoding.UTF8).ReadToEndAsync();
 
-            T notify = JsonSerializer.Deserialize<T>(body);
+            T notify = JsonUtil.Deserialize<T>(body);
             return notify;
         }
 
